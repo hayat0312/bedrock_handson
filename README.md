@@ -140,7 +140,7 @@ $.ajax({
     ![バケットのアクセス許可](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/04-Amplify06.png)
 
 6. まずはこの状態でテキストボックスに質問を入力し、挙動を見てみましょう。
-	![pic](images/image copy.png)
+	![picss](images/image%20copy.png)
 	現状ではリクエストを受理するAPIが存在しないため、エラーが返ってくることがわかるかと思います。
 
 
@@ -149,7 +149,7 @@ $.ajax({
 
 1. AWSコンソール上で左上の検索バーに「**Bedrock**」と入力し、検索します。
 2. 画面左側のナビゲーションペインで「ガードレール」を選択し、「**ガードレールを作成**」を選択します。 
-	![alt text](image/image2.png)
+	![alt text](images/image2.png)
 
 3. ガードレールを作成する画面に遷移します。名前に「`SimpleBedrockGuardrail`」と入力します。また「**Cross-Region inference - _optional_**」のタブを開き、「**Enable cross-Region inference for your guardrail**」のチェックを入れます。
    「次へ」を押します。

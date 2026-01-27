@@ -153,22 +153,22 @@ $.ajax({
 
 3. ガードレールを作成する画面に遷移します。名前に「`SimpleBedrockGuardrail`」と入力します。また「**Cross-Region inference - _optional_**」のタブを開き、「**Enable cross-Region inference for your guardrail**」のチェックを入れます。
    「次へ」を押します。
-	![pic](images/image copy 2.png)
+	![pic](images/image%20copy%202.png)
 	**クロスリージョン推論とは**
 	ガードレールでクロスリージョン推論を有効にすると、Amazon Bedrock Guardrails は、地理的に分散された複数のリージョン間でデータを安全に転送して処理します。これにより、需要の増加時にもガードレールのパフォーマンスと信頼性を維持できます。
 
 4. コンテンツフィルターを設定する画面に遷移します。
    「`有害カテゴリのフィルターを有効にする`」をオンにします。また「**Content filters tier**」として「`Standard`」を選択します。「**スキップして確認および作成**」を押します。
-	![pics](images/image copy 3.png)
+	![pics](images/image%20copy%203.png)
 5. 確認画面に遷移します。下までスクロールし、「**ガードレールを作成**」を押します。
-	![pic](images/image copy 4.png)
+	![pic](images/image%20copy%204.png)
 
 6. これでガードレールが作成されました。続いてバージョンを作成します。
    「**バージョンを作成**」を押し、新しいバージョンを作成します。
-   ![pic](images/image copy 5.png)
-   ![pic](images/image copy 6.png)
+   ![pic](images/image%20copy%205.png)
+   ![pic](images/image%20copy%206.png)
 7. ガードレールの概要画面で、英数字12桁のIDをコピー＆メモしておきます。
-   ![pic](images/image copy 7.png)
+   ![pic](images/image%20copy%207.png)
    これでガードレールの設定は完了です。
 
 

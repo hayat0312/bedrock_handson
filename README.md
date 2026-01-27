@@ -20,6 +20,9 @@ Web アプリケーションのインターフェイスになるフロントエ�
 （ファイル名が異なると認識しません。）
 
 ```html
+<!DOCTYPE html>
+<html>
+
 <head>
     <meta charset="UTF-8">
     <title>Amazon Bedrockサンプルアプリ</title>
@@ -31,8 +34,7 @@ Web アプリケーションのインターフェイスになるフロントエ�
 
             $("#button").click(function () {
                 $("#response").html("Bedrockに問い合わせしています");
-	            // ここのURLはAPIのデプロイ時に表示されるURL（後述）に差し替える
-	            var url = "https://XXXXXXXX.execute-api.us-west-2.amazonaws.com/prod";
+                var url = "https://xxxxxxxxxx.execute-api.us-west-2.amazonaws.com/prod";
                 var JSONdata = {
                     "key1": $("#text").val()
                 };
@@ -65,6 +67,8 @@ Web アプリケーションのインターフェイスになるフロントエ�
     <p><button id="button" type="button">送信</button></p>
     <textarea id="response" cols=120 rows=10 disabled></textarea>
 </body>
+
+</html>
 ```
 
 いくつか重要なポイントに絞って解説していきます。まず、ファイルの末尾にある HTML の body 部分を確認していきます。

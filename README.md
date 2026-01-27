@@ -65,13 +65,11 @@ Web アプリケーションのインターフェイスになるフロントエ�
     <p><button id="button" type="button">送信</button></p>
     <textarea id="response" cols=120 rows=10 disabled></textarea>
 </body>
-
-</html>
 ```
 
 いくつか重要なポイントに絞って解説していきます。まず、ファイルの末尾にある HTML の body 部分を確認していきます。
 
-```html
+```
 <body>
     <h1>Amazon Bedrockサンプルアプリ</h1>
     <p>このアプリケーションは入力した文書に対して返事をしてくれます</p>
@@ -83,7 +81,7 @@ Web アプリケーションのインターフェイスになるフロントエ�
 
 HTML本体はとてもシンプルなものです。入力テキストを書き込むテキストボックしの id が「text」、ボタンの id が「button」、レスポンスを書くテキストエリアの id が「response」となっています。こちらに入った内容を JavaScript(JQuery) の前半部分で処理していきます。その内容を見てみましょう。
 
-```html
+```
 $("#button").click( function(){
             $("#response").html("Bedrockに問い合わせしています");
             // ここのURLはAPIのデプロイ時に表示されるURL（後述）に差し替える
@@ -95,7 +93,7 @@ $("#button").click( function(){
 
 JavaScriptでボタンが押されたときに関数を起動して、「text」に格納されている値を JSON データの「key1」という要素に変換します。後続の処理も見てみましょう。
 
-```html
+```
 $.ajax({
                 type : 'post',
                 url : url,
@@ -155,6 +153,7 @@ $.ajax({
    「次へ」を押します。
 	![pic](images/image%20copy%202.png)
 	**クロスリージョン推論とは**
+
 	ガードレールでクロスリージョン推論を有効にすると、Amazon Bedrock Guardrails は、地理的に分散された複数のリージョン間でデータを安全に転送して処理します。これにより、需要の増加時にもガードレールのパフォーマンスと信頼性を維持できます。
 
 4. コンテンツフィルターを設定する画面に遷移します。
@@ -378,7 +377,7 @@ def lambda_handler(event, context):
     ![リソースに移動](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/06-API08.png)
     
 
-CORS とは？
+**CORS とは？**
 
 クロスオリジンリソース共有 (CORS) は、アプリケーションを統合するためのメカニズムです。CORS は、ウェブブラウザが異なるドメインからリソースを安全に共有できるようにするためのメカニズムです。特定のドメインにロードされたクライアントウェブアプリケーションが異なるドメイン内のリソースと通信する方法を定義します。複雑なアプリケーションはクライアント側のコードでサードパーティーの API やリソースを参照することが多いため、CORS が役立ちます。
 
@@ -394,7 +393,7 @@ CORS とは？
     ![APIのURL](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/06-API12.png)
     
 
-APIのセキュリティ設定について
+**APIのセキュリティ設定について**
 
 このワークショップではサンプルアプリケーションの作成なのでシンプルな構成にしていますが。本番アプリケーションにはCognitoオーソライザーやLambdaオーソライザーなどによる認証・認可のプロセスを入れるようにしましょう。認証・認可をAPI Gateway利用時に必須にすることでAPIの不正利用による課金増を防ぐことができます。
 
@@ -560,4 +559,5 @@ def lambda_handler(event, context):
 ```
 
 21. この状態でサンプリアプリのWebページに戻り、ナレッジベースの内容を取得した上で応答できるか試してみましょう。
+    
     例：「Fire TV Stickの特徴を教えてください」

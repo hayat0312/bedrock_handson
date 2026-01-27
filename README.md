@@ -71,7 +71,7 @@ Web アプリケーションのインターフェイスになるフロントエ�
 
 いくつか重要なポイントに絞って解説していきます。まず、ファイルの末尾にある HTML の body 部分を確認していきます。
 
-```
+```html
 <body>
     <h1>Amazon Bedrockサンプルアプリ</h1>
     <p>このアプリケーションは入力した文書に対して返事をしてくれます</p>
@@ -83,7 +83,7 @@ Web アプリケーションのインターフェイスになるフロントエ�
 
 HTML本体はとてもシンプルなものです。入力テキストを書き込むテキストボックしの id が「text」、ボタンの id が「button」、レスポンスを書くテキストエリアの id が「response」となっています。こちらに入った内容を JavaScript(JQuery) の前半部分で処理していきます。その内容を見てみましょう。
 
-```
+```html
 $("#button").click( function(){
             $("#response").html("Bedrockに問い合わせしています");
             // ここのURLはAPIのデプロイ時に表示されるURL（後述）に差し替える
@@ -95,7 +95,7 @@ $("#button").click( function(){
 
 JavaScriptでボタンが押されたときに関数を起動して、「text」に格納されている値を JSON データの「key1」という要素に変換します。後続の処理も見てみましょう。
 
-```
+```html
 $.ajax({
                 type : 'post',
                 url : url,
@@ -125,7 +125,7 @@ $.ajax({
 ![マネジメントコンソールでサービス名検索](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/04-Amplify01.png)
 
 1. Amplify Consoleのトップ画面に遷移したら、「**アプリケーションをデプロイ**」ボタンを押します。  
-    ![[Pasted image 20260127172533.png]]
+    ![alt text](images/image.png)
 
 2. アプリケーションの作成画面に遷移します。アプリケーションのデプロイ方法を選択する画面に移るので、「**Gitなしでデプロイ**」を選択し、「**次へ**」を押します。  
     ![作成方法の選択](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/04-Amplify03.png)

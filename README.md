@@ -16,8 +16,8 @@
 
 Web アプリケーションのインターフェイスになるフロントエンドの HTML ファイルについて内容を確認していきます。
 
-ファイルの内容は以下の通りです。任意のテキストエディタで新規に「**index.html**」というファイルを作成し、以下の内容をコピー＆ペーストしてください。
-（ファイル名が異なると認識しません。）
+ファイルの内容は以下の通りです。今回は時短のためにzip化したファイルを配布します。
+（解凍すると以下のファイルが見えるかと思います）
 
 ```html
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ Web アプリケーションのインターフェイスになるフロントエ�
 
             $("#button").click(function () {
                 $("#response").html("Bedrockに問い合わせしています");
-                var url = "https://xxxxxxxxxx.execute-api.us-west-2.amazonaws.com/prod";
+                var url = $("#apiUrl").val();
                 var JSONdata = {
                     "key1": $("#text").val()
                 };
@@ -66,6 +66,9 @@ Web アプリケーションのインターフェイスになるフロントエ�
     <p>入力テキスト: <input type="text" id="text" size="100" placeholder="テキストを入力してください"></p>
     <p><button id="button" type="button">送信</button></p>
     <textarea id="response" cols=120 rows=10 disabled></textarea>
+    <hr>
+    <p>API URL: <input type="text" id="apiUrl" size="100"
+            value="https://xxxxxxxxxx.execute-api.us-west-2.amazonaws.com/prod"></p>
 </body>
 
 </html>
@@ -80,34 +83,43 @@ Web アプリケーションのインターフェイスになるフロントエ�
     <p>入力テキスト: <input type="text" id="text" size="100" placeholder="テキストを入力してください"></p>
     <p><button id="button" type="button">送信</button></p>
     <textarea id="response" cols=120 rows=10 disabled></textarea>
+    <hr>
+    <p>API URL: <input type="text" id="apiUrl" size="100"
+            value="https://xxxxxxxxxx.execute-api.us-west-2.amazonaws.com/prod"></p>
 </body>
 ```
 
 HTML本体はとてもシンプルなものです。入力テキストを書き込むテキストボックしの id が「text」、ボタンの id が「button」、レスポンスを書くテキストエリアの id が「response」となっています。こちらに入った内容を JavaScript(JQuery) の前半部分で処理していきます。その内容を見てみましょう。
 
 ```
-$("#button").click( function(){
-            $("#response").html("Bedrockに問い合わせしています");
-            // ここのURLはAPIのデプロイ時に表示されるURL（後述）に差し替える
-            var url = "https://XXXXXXXXX.execute-api.us-west-2.amazonaws.com/prod"; 
-                var JSONdata = {
-                    "key1": $("#text").val()
-                };
+$("#button").click(function () {
+    $("#response").html("Bedrockに問い合わせしています");
+    var url = $("#apiUrl").val();
+    var JSONdata = {
+        "key1": $("#text").val()
+    };
 ```
 
 JavaScriptでボタンが押されたときに関数を起動して、「text」に格納されている値を JSON データの「key1」という要素に変換します。後続の処理も見てみましょう。
 
 ```
 $.ajax({
-                type : 'post',
-                url : url,
-                data : JSON.stringify(JSONdata),
-                contentType: 'application/json',
-                dataType : 'json',
-                scriptCharset: 'utf-8',
-                success : function(data) {
-                    $("#response").html(data);
-                },
+    type: 'post',
+    url: url,
+    data: JSON.stringify(JSONdata),
+    contentType: 'application/json',
+    dataType: 'json',
+    scriptCharset: 'utf-8',
+    success: function (data) {
+        $("#response").html(data);
+    },
+    error: function (data) {
+        // Error
+        alert("error");
+        alert(JSON.stringify(data));
+        $("#response").html(JSON.stringify(data));
+    }
+});
 ```
 
 後続処理では、指定した URL （前半部に記載があったようにこの後の手順で作成する API Gateway の URL で置き換えます）に 前の手順で変換した JSON データを POST するという処理を実施します。POST がうまくいった場合に、送信先からの返り値(data)で response フィールドの内容が置き換えられます。

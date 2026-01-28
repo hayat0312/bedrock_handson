@@ -12,7 +12,7 @@
 
             $("#button").click(function () {
                 $("#response").html("Bedrockに問い合わせしています");
-                var url = "https://xxxxxxxxxx.execute-api.us-west-2.amazonaws.com/prod";
+                var url = $("#apiUrl").val();
                 var JSONdata = {
                     "key1": $("#text").val()
                 };
@@ -44,6 +44,9 @@
     <p>入力テキスト: <input type="text" id="text" size="100" placeholder="テキストを入力してください"></p>
     <p><button id="button" type="button">送信</button></p>
     <textarea id="response" cols=120 rows=10 disabled></textarea>
+    <hr>
+    <p>API URL: <input type="text" id="apiUrl" size="100"
+            value="https://xxxxxxxxxx.execute-api.us-west-2.amazonaws.com/prod"></p>
 </body>
 
 </html>

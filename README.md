@@ -182,41 +182,6 @@ $.ajax({
 import json
 import boto3
 
-bedrock = boto3.client(service_name='bedrock-runtime')
-
-def lambda_handler(event, context):
-    user_prompt = event["key1"]
-    model_id = 'us.anthropic.claude-sonnet-4-5-20250929-v1:0'
-    system_prompts = [{"text": "あなたは生成AIのエージェントです。ユーザからの質問に日本語で丁寧に回答してください。"}]
-
-    messages = [
-        {
-            "role": "user",
-            "content": [{"text": user_prompt}],
-        }
-    ]
-
-    inferenceConfig = {
-        "temperature": 0.1,
-        "maxTokens": 3000,
-        "stopSequences":[]
-    }
-
-    response = bedrock.converse(
-        modelId=model_id ,
-        messages=messages,
-        system=system_prompts,
-        inferenceConfig=inferenceConfig
-    )
-
-    return(response["output"]["message"]["content"][0]["text"])
-    
-    
-    
-    
-import json
-import boto3
-
 def lambda_handler(event, context):
     # Bedrockクライアントを初期化
     bedrock = boto3.client(service_name='bedrock-runtime',

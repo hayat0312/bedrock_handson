@@ -447,7 +447,7 @@ def lambda_handler(event, context):
     ![S3アップロード](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/07-RAG14.png)
     
 
-14. サンプルファイルとして、[Amazonデバイスの仕様資料を用意しました](https://ws-assets-prod-iad-r-cmh-8d6e9c21a4dec77d.s3.us-east-2.amazonaws.com/0da6f9f4-c42f-4d47-90df-f89f4ab57e41/knowledge_base_context.pdf) 。ローカル環境にダウンロードした後ドラッグ＆ドロップして「**アップロード**」ボタンを押します。  
+14. サンプルファイルとして、**架空のドラム式洗濯機のサービスマニュアル**を用意しました。ローカル環境にダウンロードした後ドラッグ＆ドロップして「**アップロード**」ボタンを押します。  
 ![S3アップロード](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/07-RAG15.png)
 
 15. アップロードが完了したら「**閉じる**」ボタンを押して終了します。  
@@ -520,6 +520,7 @@ def lambda_handler(event, context):
 
 ```
 
-21. この状態でサンプリアプリのWebページに戻り、ナレッジベースの内容を取得した上で応答できるか試してみましょう。
+21. この状態でサンプルアプリのWebページに戻り、ナレッジベースの内容を取得した上で応答できるか試してみましょう。
     
-    例：「Fire TV Stickの特徴を教えてください」
+    例：「顧客から乾燥が不十分になってきたとのことで修理依頼を受けた。修理手順を説明して。」
+    「DW-X9000の社内問い合わせ先はどこ？」

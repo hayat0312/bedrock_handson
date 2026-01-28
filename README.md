@@ -12,6 +12,7 @@
 ハンズオンはオレゴンリージョン (us-west-2) を利用してください。
 
 
+
 # フロントエンドファイルの内容
 
 Web アプリケーションのインターフェイスになるフロントエンドの HTML ファイルについて内容を確認していきます。
@@ -133,6 +134,7 @@ $.ajax({
 それでは、各コンポーネントを作っていきましょう。
 
 
+
 # AWS Amplify への HTML ファイルアップロード
 
 このハンズオンではAWS Amplifyを使ってWebサーバーの公開を行います。AWS Amplifyはモバイルアプリケーションを簡単にデプロイすることができるサービスで、Amplify HostingというWebサイトホスティング機能を有しています。こちらのサービスで簡単にフロントエンドファイルをWeb公開できます。 それでは、まずマネジメントコンソール上部の検索ボックスに「Amplify」と入力してAWS Amplifyのコンソールにアクセスしましょう。  
@@ -156,6 +158,7 @@ $.ajax({
 6. まずはこの状態でテキストボックスに質問を入力し、挙動を見てみましょう。
 	![picss](images/image%20copy.png)
 	現状ではリクエストを受理するAPIが存在しないため、エラーが返ってくることがわかるかと思います。
+
 
 
 # Bedrock ガードレールの設定
@@ -185,6 +188,7 @@ $.ajax({
 7. ガードレールの概要画面で、英数字12桁のIDをコピー＆メモしておきます。
    ![pic](images/image%20copy%207.png)
    これでガードレールの設定は完了です。
+
 
 
 # Lambda関数の作成
@@ -272,8 +276,11 @@ def lambda_handler(event, context):
     )
 ```
 
-このセクションでは、Amazon BedrockのConverse APIを使ってLambda関数の実行部分で利用するパラメータとレスポンスの形式を定義します。Lambdaに渡されるイベントデータの中にフロントエンドから渡されたユーザー入力メッセージがありますので、それをuser_prompt変数に格納し、user_message配列に入れてユーザープロンプトとします。model_idパラメーターでは利用する基盤モデルを指定します。利用したいモデルに応じて、モデルIDの値を書き換えます（このワークショップで利用できるモデルIDの一覧は[こちらのページ](https://catalog.us-east-1.prod.workshops.aws/workshops/0da6f9f4-c42f-4d47-90df-f89f4ab57e41/ja-JP/02-Bedrock/)を参照してください）。また、システムプロンプトを設定したら、infernceConfigセクションにて出力の最大値、temparature（出力のランダム性）などのパラメーターを設定します。  さらにガードレールとして先ほど設定したガードレールのidとversionを指定しています。
-これらの内容をbobedrock.converse配列に投入してLLMに引き渡せし、レスポンスを引き出せるようにします。
+このセクションでは、Amazon BedrockのConverse APIを使ってLambda関数の実行部分で利用するパラメータとレスポンスの形式を定義します。Lambdaに渡されるイベントデータの中にフロントエンドから渡されたユーザー入力メッセージがありますので、それをuser_prompt変数に格納し、user_message配列に入れてユーザープロンプトとします。model_idパラメーターでは利用する基盤モデルを指定します。利用したいモデルに応じて、モデルIDの値を書き換えます（このワークショップで利用できるモデルIDの一覧は[こちらのページ](https://catalog.us-east-1.prod.workshops.aws/workshops/0da6f9f4-c42f-4d47-90df-f89f4ab57e41/ja-JP/02-Bedrock/)を参照してください）。
+
+また、システムプロンプトを設定したら、infernceConfigセクションにて出力の最大値、temparature（出力のランダム性）などのパラメーターを設定します。  さらにガードレールとして先ほど設定したガードレールのidとversionを指定しています。
+
+これらの内容をbobedrock.converse配列に投入してLLMに引き渡し、レスポンスを引き出せるようにします。
 
 ```python
     return(response["output"]["message"]["content"][0]["text"])
@@ -301,13 +308,14 @@ def lambda_handler(event, context):
 2. 「一から作成」メニューで、関数の名前は「`SimpleBedrock`」、ランタイムは「**Python3.14**」にして、「**関数の作成**」ボタンを押します。  
     ![関数の作成](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/05-Lambda02.png)
 
-3. 関数が作成されますので、コード入力欄に上記のコード全文をコピー＆ペーストします。  
+3. 関数が作成されますので、コード入力欄の既存のコードを削除し、上記のコード全文をコピー＆ペーストします。  
     ![コードの貼り付け関数の作成](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/05-Lambda03.png)
 　
 
 インデントの位置に気をつけてください。
-    
-4. 変更が完了したら「**Deploy**」ボタンを押して変更を反映します。
+
+4. `guardrail_id`のところを先ほどメモしたガードレールIDで置き換えます。変更が完了したら「**Deploy**」ボタンを押して変更を反映します。
+
 5. Lambda 関数はタイムアウト時間が初期状態だと3秒に設定されており、言語モデルの推論に間に合わないためこの時間を延長します。「設定」タブの「一般設定」メニューの「**編集**」ボタンを押します。  
     ![タイムアウト設定編集](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/05-Lambda05.png)
 
@@ -323,6 +331,7 @@ def lambda_handler(event, context):
 
 9. 保存できたら再度「Test」ボタンを押しましょう。テスト結果画面の「Response」に問いかけへの回答が表示されたら成功です！  
     ![テスト実行結果](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/05-Lambda10.png)
+
 
 
 
@@ -370,52 +379,24 @@ def lambda_handler(event, context):
     
 11. **ステージ**に**新しいステージ**を選び、**ステージ名**に`prod`と入力し、**デプロイ**をクリックします。 ![APIをデプロイ](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/06-API11.png)
     
-12. APIのURLが生成されるので、画面中部のURLをコピーして控えます。S3に配置した**index.html**に記載されたURLをここで控えたURLと差し替えます。  
+12. APIのURLが生成されるので、画面中部のURLをコピーして控えます。
     ![APIのURL](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/06-API12.png)
     
+13. 先ほどのウェブアプリの画面に戻り、画面下部の`API URL`のテキストボックスにAPI GatewayのURLをペーストします。
+    ![pic](images/image%20copy%208.png)
+
+
+
 
 **APIのセキュリティ設定について**
 
 このワークショップではサンプルアプリケーションの作成なのでシンプルな構成にしていますが。本番アプリケーションにはCognitoオーソライザーやLambdaオーソライザーなどによる認証・認可のプロセスを入れるようにしましょう。認証・認可をAPI Gateway利用時に必須にすることでAPIの不正利用による課金増を防ぐことができます。
 
-13. Step12で控えたURLで**index.html**を書き換えましょう。  
-    コードの15行目の`var url = "https://XXXXXXXX.execute-api.us-west-2.amazonaws.com/prod";`の部分に記載されたURLを書き換えます。
-    
-    ```javascript
-    <script type="text/javascript">
-        $(function(){
-            $("#response").html("Bedrockからの回答がここに表示されます");
-    
-            $("#button").click( function(){
-                $("#response").html("Bedrockに問い合わせしています");
-                // ここのURLはAPIのデプロイ時に表示されるURL（後述）に差し替える
-                var url = "https://XXXXXXXX.execute-api.us-west-2.amazonaws.com/prod";
-                    var JSONdata = {
-                        "key1": $("#text").val()
-                    };
-    ```
-    
 
-14. ファイルをアップロードするためAmplifyのコンソールに戻ります。検索バーに`Amplify`と入力し、**AWS Amplify**をクリックしてください。  
-    ![Amplify](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/04-Amplify01.png)
-    
-15. アプリケーション一覧が表示されるので、先の章で作成した「Simplebedrock」アプリの「**アプリを表示**」ボタンをクリックします。  
-    ![S3バケット名](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/06-API15.png)
-    
-16. 表示された画面で「アップデートをデプロイ」ボタンを押すとアップデートをデプロイする画面が表示されます。  
-    ![S3バケット名](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/04-Amplify06.png)
-    
-17. 更新した「index.html」ファイルを再度Zip化して画面下部の領域にドラッグ＆ドロップします（Zipファイルの名前はなんでも良いです。初回アップロード時と同じでも別でも問題ありません）。 ![アップロード](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/06-API16.png)
-    
-18. ファイルがセットされたら、「**保存してデプロイ**」ボタンが表示されるので押します。 ![オブジェクトURL](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/06-API17.png)
-    
-19. デプロイが完了したらアプリ概要画面が表示されますので、「**デプロイされたURLにアクセス**」ボタンを押しましょう。  
-    ![動作確認](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/04-Amplify06.png)
-    
-
-20. 表示されたWebページからBedrockへ質問をしてみましょう。**入力テキスト**に質問を入力し、**送信**をクリックします。  
+14. 表示されたWebページからBedrockへ質問をしてみましょう。**入力テキスト**に質問を入力し、**送信**をクリックします。  
 	回答が返ってきたらハンズオン成功です！  
 	![動作確認](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/06-API20.png)
+
 
 
 

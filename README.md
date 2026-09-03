@@ -342,7 +342,7 @@ def lambda_handler(event, context):
     ![マネジメントコンソールでサービス名検索](https://static.us-east-1.prod.workshops.aws/public/180149b9-f35e-46f7-93a7-bfdcb5fec962/static/06-API01.png)
 
 2. 画面の下方までスクロールし、**REST API を作成**をクリックします  
-    ![REST APIクリック](images/スクリーンショット 2026-09-03 21.12.56.png)
+    ![REST APIクリック](images/api.png)
     
 3. REST APIの設定をしていきます。  
     **新しいAPI**をクリックし、**API名**に`SimpleBedrockAPI`と入力し、**APIを作成**をクリックします。  
@@ -416,7 +416,7 @@ def lambda_handler(event, context):
     ![ナレッジベースメニュー](https://static.us-east-1.prod.workshops.aws/public/180149b9-f35e-46f7-93a7-bfdcb5fec962/static/07-RAG04.png)
     
 5. 画面下部に移動し、「ナレッジベース」メニューから「マネージド KB を作成」の**右の▼ボタン**を押してポップアップを開き「**非構造化ベクトルストア KB**」を選択します。  
-    ![ナレッジベースを作成](images/スクリーンショット 2026-09-03 21.13.38.png)
+    ![ナレッジベースを作成](images/manageKB.png)
     
 6. ナレッジベース詳細画面に遷移します。ステップ1の画面は何も設定を変更する必要がありませんので、そのまま画面最下部の「**次へ**」ボタンをクリックします。  
     ![ナレッジベース詳細](https://static.us-east-1.prod.workshops.aws/public/180149b9-f35e-46f7-93a7-bfdcb5fec962/static/07-RAG06.png)

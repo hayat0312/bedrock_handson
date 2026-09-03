@@ -416,7 +416,7 @@ def lambda_handler(event, context):
     ![ナレッジベースメニュー](https://static.us-east-1.prod.workshops.aws/public/180149b9-f35e-46f7-93a7-bfdcb5fec962/static/07-RAG04.png)
     
 5. 画面下部に移動し、「ナレッジベース」メニューから「マネージド KB を作成」の**右の▼ボタン**を押してポップアップを開き「**非構造化ベクトルストア KB**」を選択します。  
-    ![ナレッジベースを作成](images/manageKB.png)
+    ![ナレッジベースを作成](images/managedKB.png)
     
 6. ナレッジベース詳細画面に遷移します。ステップ1の画面は何も設定を変更する必要がありませんので、そのまま画面最下部の「**次へ**」ボタンをクリックします。  
     ![ナレッジベース詳細](https://static.us-east-1.prod.workshops.aws/public/180149b9-f35e-46f7-93a7-bfdcb5fec962/static/07-RAG06.png)

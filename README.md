@@ -1,13 +1,12 @@
 # はじめに
 本ハンズオンで作成するアプリケーションのイメージは以下の通りです。
 
-![アプリケーション完成図](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/01-appimage.png)
-
+![アプリケーション完成図](https://static.us-east-1.prod.workshops.aws/180149b9-f35e-46f7-93a7-bfdcb5fec962/static/01-appimage.png?Key-Pair-Id=K36Q2WVO3JP7QD&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9zdGF0aWMudXMtZWFzdC0xLnByb2Qud29ya3Nob3BzLmF3cy8xODAxNDliOS1mMzVlLTQ2ZjctOTNhNy1iZmRjYjVmZWM5NjIvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc4OTAzNjIyMH19fV19&Signature=Yp63VJv%7E1DfuliINhwgdxG6q7JSMkCswmYhYg-qzseIfjvPP%7ERMpHrZlkTIoT%7Eom8n9XpBpB5KARzrlk5OfJ2RgYegON3CVr5aS7V870TERdcZsk7k1jKysZmc%7EWn0%7E3F68IaJV4wZSoB4IYbTLEySP234UZlFbggl6lVBsEzEviOapRxEVaY-ZNfwOeQ8MmBKSxfzpP-OeuQIz9cuzdeMOIW7lgSQC8cgmv1lA9ciLi4ev3CAjjPRKzU1aRFMGLy%7E-4IE-9EaQ9-P0wIQa3dkUTvjiuZUJYfpqRHl5eG4w1p52wjpK6P0bR9m6Poc4XbJjJ6%7EZ6lLpfSkgHA8B37A__)
 ---
 
 本ハンズオンでは下記の環境を構築します。
 
-![アーキテクチャ図](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/01-01-architecture.png)
+![アーキテクチャ図](https://static.us-east-1.prod.workshops.aws/180149b9-f35e-46f7-93a7-bfdcb5fec962/static/01-01-architecture.png?Key-Pair-Id=K36Q2WVO3JP7QD&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9zdGF0aWMudXMtZWFzdC0xLnByb2Qud29ya3Nob3BzLmF3cy8xODAxNDliOS1mMzVlLTQ2ZjctOTNhNy1iZmRjYjVmZWM5NjIvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc4OTAzNjIyMH19fV19&Signature=Yp63VJv%7E1DfuliINhwgdxG6q7JSMkCswmYhYg-qzseIfjvPP%7ERMpHrZlkTIoT%7Eom8n9XpBpB5KARzrlk5OfJ2RgYegON3CVr5aS7V870TERdcZsk7k1jKysZmc%7EWn0%7E3F68IaJV4wZSoB4IYbTLEySP234UZlFbggl6lVBsEzEviOapRxEVaY-ZNfwOeQ8MmBKSxfzpP-OeuQIz9cuzdeMOIW7lgSQC8cgmv1lA9ciLi4ev3CAjjPRKzU1aRFMGLy%7E-4IE-9EaQ9-P0wIQa3dkUTvjiuZUJYfpqRHl5eG4w1p52wjpK6P0bR9m6Poc4XbJjJ6%7EZ6lLpfSkgHA8B37A__)
 
 ハンズオンはオレゴンリージョン (us-west-2) を利用してください。
 
@@ -123,7 +122,7 @@ $.ajax({
 });
 ```
 
-後続処理では、指定した URL （前半部に記載があったようにこの後の手順で作成する API Gateway の URL で置き換えます）に 前の手順で変換した JSON データを POST するという処理を実施します。POST がうまくいった場合に、送信先からの返り値(data)で response フィールドの内容が置き換えられます。
+後続処理では、指定した URL に前の手順で変換した JSON データを POST するという処理を実施します。POST がうまくいった場合に、送信先からの返り値(data)で response フィールドの内容が置き換えられます。
 
 したがって、これから私たちは以下のものを作っていく必要があります。
 
@@ -138,22 +137,23 @@ $.ajax({
 # AWS Amplify への HTML ファイルアップロード
 
 このハンズオンではAWS Amplifyを使ってWebサーバーの公開を行います。AWS Amplifyはモバイルアプリケーションを簡単にデプロイすることができるサービスで、Amplify HostingというWebサイトホスティング機能を有しています。こちらのサービスで簡単にフロントエンドファイルをWeb公開できます。 それでは、まずマネジメントコンソール上部の検索ボックスに「Amplify」と入力してAWS Amplifyのコンソールにアクセスしましょう。  
-![マネジメントコンソールでサービス名検索](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/04-Amplify01.png)
+
+![マネジメントコンソールでサービス名検索](https://static.us-east-1.prod.workshops.aws/180149b9-f35e-46f7-93a7-bfdcb5fec962/static/04-Amplify01.png?Key-Pair-Id=K36Q2WVO3JP7QD&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9zdGF0aWMudXMtZWFzdC0xLnByb2Qud29ya3Nob3BzLmF3cy8xODAxNDliOS1mMzVlLTQ2ZjctOTNhNy1iZmRjYjVmZWM5NjIvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc4OTAzNjIyMH19fV19&Signature=Yp63VJv%7E1DfuliINhwgdxG6q7JSMkCswmYhYg-qzseIfjvPP%7ERMpHrZlkTIoT%7Eom8n9XpBpB5KARzrlk5OfJ2RgYegON3CVr5aS7V870TERdcZsk7k1jKysZmc%7EWn0%7E3F68IaJV4wZSoB4IYbTLEySP234UZlFbggl6lVBsEzEviOapRxEVaY-ZNfwOeQ8MmBKSxfzpP-OeuQIz9cuzdeMOIW7lgSQC8cgmv1lA9ciLi4ev3CAjjPRKzU1aRFMGLy%7E-4IE-9EaQ9-P0wIQa3dkUTvjiuZUJYfpqRHl5eG4w1p52wjpK6P0bR9m6Poc4XbJjJ6%7EZ6lLpfSkgHA8B37A__)
 
 1. Amplify Consoleのトップ画面に遷移したら、「**アプリケーションをデプロイ**」ボタンを押します。  
     ![alt text](images/image.png)
 
 2. アプリケーションの作成画面に遷移します。アプリケーションのデプロイ方法を選択する画面に移るので、「**Gitなしでデプロイ**」を選択し、「**次へ**」を押します。  
-    ![作成方法の選択](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/04-Amplify03.png)
+    ![作成方法の選択](https://static.us-east-1.prod.workshops.aws/180149b9-f35e-46f7-93a7-bfdcb5fec962/static/04-Amplify03.png?Key-Pair-Id=K36Q2WVO3JP7QD&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9zdGF0aWMudXMtZWFzdC0xLnByb2Qud29ya3Nob3BzLmF3cy8xODAxNDliOS1mMzVlLTQ2ZjctOTNhNy1iZmRjYjVmZWM5NjIvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc4OTAzNjIyMH19fV19&Signature=Yp63VJv%7E1DfuliINhwgdxG6q7JSMkCswmYhYg-qzseIfjvPP%7ERMpHrZlkTIoT%7Eom8n9XpBpB5KARzrlk5OfJ2RgYegON3CVr5aS7V870TERdcZsk7k1jKysZmc%7EWn0%7E3F68IaJV4wZSoB4IYbTLEySP234UZlFbggl6lVBsEzEviOapRxEVaY-ZNfwOeQ8MmBKSxfzpP-OeuQIz9cuzdeMOIW7lgSQC8cgmv1lA9ciLi4ev3CAjjPRKzU1aRFMGLy%7E-4IE-9EaQ9-P0wIQa3dkUTvjiuZUJYfpqRHl5eG4w1p52wjpK6P0bR9m6Poc4XbJjJ6%7EZ6lLpfSkgHA8B37A__)
 
 3. 手動デプロイ開始画面に遷移するので、アプリケーションの名前を「`SimpleBedrock`」と入力してブランチ名に「`main`」と入力します。そして、フロントエンドファイルとして作成した「`index.html`」ファイルをWindowsエクスプローラーやFinder上でZipファイル「`index.html.zip`」として圧縮して、画面下部のファイルアップロード領域にドラッグ&ドロップします。準備ができたら、「**保存してデプロイ**」ボタンを押します。  
-    ![手動デプロイ](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/04-Amplify04.png)
+    ![手動デプロイ](https://static.us-east-1.prod.workshops.aws/180149b9-f35e-46f7-93a7-bfdcb5fec962/static/04-Amplify04.png?Key-Pair-Id=K36Q2WVO3JP7QD&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9zdGF0aWMudXMtZWFzdC0xLnByb2Qud29ya3Nob3BzLmF3cy8xODAxNDliOS1mMzVlLTQ2ZjctOTNhNy1iZmRjYjVmZWM5NjIvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc4OTAzNjIyMH19fV19&Signature=Yp63VJv%7E1DfuliINhwgdxG6q7JSMkCswmYhYg-qzseIfjvPP%7ERMpHrZlkTIoT%7Eom8n9XpBpB5KARzrlk5OfJ2RgYegON3CVr5aS7V870TERdcZsk7k1jKysZmc%7EWn0%7E3F68IaJV4wZSoB4IYbTLEySP234UZlFbggl6lVBsEzEviOapRxEVaY-ZNfwOeQ8MmBKSxfzpP-OeuQIz9cuzdeMOIW7lgSQC8cgmv1lA9ciLi4ev3CAjjPRKzU1aRFMGLy%7E-4IE-9EaQ9-P0wIQa3dkUTvjiuZUJYfpqRHl5eG4w1p52wjpK6P0bR9m6Poc4XbJjJ6%7EZ6lLpfSkgHA8B37A__)
 
 4. デプロイ画面が表示されるのでしばらく待ちます。  
-    ![デプロイ](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/04-Amplify05.png)
+    ![デプロイ](https://static.us-east-1.prod.workshops.aws/180149b9-f35e-46f7-93a7-bfdcb5fec962/static/04-Amplify05.png?Key-Pair-Id=K36Q2WVO3JP7QD&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9zdGF0aWMudXMtZWFzdC0xLnByb2Qud29ya3Nob3BzLmF3cy8xODAxNDliOS1mMzVlLTQ2ZjctOTNhNy1iZmRjYjVmZWM5NjIvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc4OTAzNjIyMH19fV19&Signature=Yp63VJv%7E1DfuliINhwgdxG6q7JSMkCswmYhYg-qzseIfjvPP%7ERMpHrZlkTIoT%7Eom8n9XpBpB5KARzrlk5OfJ2RgYegON3CVr5aS7V870TERdcZsk7k1jKysZmc%7EWn0%7E3F68IaJV4wZSoB4IYbTLEySP234UZlFbggl6lVBsEzEviOapRxEVaY-ZNfwOeQ8MmBKSxfzpP-OeuQIz9cuzdeMOIW7lgSQC8cgmv1lA9ciLi4ev3CAjjPRKzU1aRFMGLy%7E-4IE-9EaQ9-P0wIQa3dkUTvjiuZUJYfpqRHl5eG4w1p52wjpK6P0bR9m6Poc4XbJjJ6%7EZ6lLpfSkgHA8B37A__)
 
 5. デプロイが完了するとURLが表示されますので、「**デプロイされたURLにアクセス**」ボタンを押し、HTML ファイルにアクセスできることを確認してください。確認できたら次のステップに進みます。  
-    ![バケットのアクセス許可](https://static.us-east-1.prod.workshops.aws/public/84e32ea2-4573-4e7b-a487-fe0918b0832e/static/04-Amplify06.png)
+    ![バケットのアクセス許可](https://static.us-east-1.prod.workshops.aws/180149b9-f35e-46f7-93a7-bfdcb5fec962/static/04-Amplify06.png?Key-Pair-Id=K36Q2WVO3JP7QD&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9zdGF0aWMudXMtZWFzdC0xLnByb2Qud29ya3Nob3BzLmF3cy8xODAxNDliOS1mMzVlLTQ2ZjctOTNhNy1iZmRjYjVmZWM5NjIvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc4OTAzNjIyMH19fV19&Signature=Yp63VJv%7E1DfuliINhwgdxG6q7JSMkCswmYhYg-qzseIfjvPP%7ERMpHrZlkTIoT%7Eom8n9XpBpB5KARzrlk5OfJ2RgYegON3CVr5aS7V870TERdcZsk7k1jKysZmc%7EWn0%7E3F68IaJV4wZSoB4IYbTLEySP234UZlFbggl6lVBsEzEviOapRxEVaY-ZNfwOeQ8MmBKSxfzpP-OeuQIz9cuzdeMOIW7lgSQC8cgmv1lA9ciLi4ev3CAjjPRKzU1aRFMGLy%7E-4IE-9EaQ9-P0wIQa3dkUTvjiuZUJYfpqRHl5eG4w1p52wjpK6P0bR9m6Poc4XbJjJ6%7EZ6lLpfSkgHA8B37A__)
 
 6. まずはこの状態でテキストボックスに質問を入力し、挙動を見てみましょう。
 	![picss](images/image%20copy.png)
